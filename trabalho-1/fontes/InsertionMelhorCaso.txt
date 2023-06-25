@@ -1,0 +1,9 @@
+100 345.96 6.9192 423 267 50 InsertionMelhorCaso-50-100.txt
+200 520.66 10.4132 572 490 50 InsertionMelhorCaso-50-200.txt
+300 738.56 14.7712 765 1006 50 InsertionMelhorCaso-50-300.txt
+400 950.3 19.006 992 906 50 InsertionMelhorCaso-50-400.txt
+500 1160.88 23.2176 1202 1085 50 InsertionMelhorCaso-50-500.txt
+600 1379.56 27.5912 1440 1353 50 InsertionMelhorCaso-50-600.txt
+700 1604.5 32.09 2006 1395 50 InsertionMelhorCaso-50-700.txt
+800 1820.86 36.4172 2298 1709 50 InsertionMelhorCaso-50-800.txt
+900 2043.56 40.8712 2797 1982 50 InsertionMelhorCaso-50-900.txt
