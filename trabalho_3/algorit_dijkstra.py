@@ -55,7 +55,9 @@ def parse_tgf(file):
 
 
 # Arquivo TGF fornecido
-tgf_file = 'robot.tgf'
+#tgf_file = 'robot.tgf'
+tgf_file = r'c:\Users\SAMSUNG\Desktop\EstruturaDeDados\trabalho_3\robot.tgf'
+
 
 # Parse do arquivo TGF para obter o grafo
 graph = parse_tgf(tgf_file)
