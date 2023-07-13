@@ -1,73 +1,71 @@
 import sys
 
-def dijkstra(graph, start):
-    # Inicializa as estruturas de dados
-    distances = {node: float('inf') for node in graph}
-    distances[start] = 0
-    visited = set()
+def dijkstra(grafo, partida):
+    # inicializa as estruturas 
+    distancias = {no: float('inf') for no in grafo}
+    distancias[partida] = 0
+    visitados = set()
 
-    while len(visited) < len(graph):
-        # Encontra o nó com a menor distância ainda não visitado
-        min_distance = float('inf')
-        min_node = None
-        for node in graph:
-            if node not in visited and distances[node] < min_distance:
-                min_distance = distances[node]
-                min_node = node
+    while len(visitados) < len(grafo):
+        # aqui vai encontrar o nó com a menor distância ainda não visitado
+        menor_distancia = float('inf')
+        no_menor = None
+        for no in grafo:
+            if no not in visitados and distancias[no] < menor_distancia:
+                menor_distancia = distancias[no]
+                no_menor = no
 
-        if min_node is None:
+        if no_menor is None:
             break
 
-        visited.add(min_node)
+        visitados.add(no_menor)
 
-        # Atualiza as distâncias dos vizinhos do nó atual
-        for neighbor, weight in graph[min_node]:
-            distance = distances[min_node] + weight
-            if distance < distances[neighbor]:
-                distances[neighbor] = distance
+        # vai atualiza as distâncias dos vizinhos do nó atual
+        for vizinho, peso in grafo[no_menor]:
+            distancia = distancias[no_menor] + peso
+            if distancia < distancias[vizinho]:
+                distancias[vizinho] = distancia
 
-    return distances
+    return distancias
 
 
-def parse_tgf(file):
-    graph = {}
-    edges_started = False
+def parse_tgf(arquivo):
+    grafo = {}
+    arestas_iniciadas = False
 
-    with open(file, 'r') as f:
-        for line in f:
-            line = line.strip()
-            if line == '#':
-                edges_started = True
+    with open(arquivo, 'r') as f:
+        for linha in f:
+            linha = linha.strip()
+            if linha == '#':
+                arestas_iniciadas = True
                 continue
 
-            if edges_started:
-                source, target, weight = map(int, line.split())
-                if source not in graph:
-                    graph[source] = []
-                graph[source].append((target, weight))
+            if arestas_iniciadas:
+                origem, destino, peso = map(int, linha.split())
+                if origem not in grafo:
+                    grafo[origem] = []
+                grafo[origem].append((destino, peso))
             else:
-                node, _ = line.split()
-                node = int(node)
-                if node not in graph:
-                    graph[node] = []
+                no, _ = linha.split()
+                no = int(no)
+                if no not in grafo:
+                    grafo[no] = []
 
-    return graph
-
-
-# Arquivo TGF fornecido
-#tgf_file = 'robot.tgf'
-tgf_file = r'c:\Users\SAMSUNG\Desktop\EstruturaDeDados\trabalho_3\robot.tgf'
+    return grafo
 
 
-# Parse do arquivo TGF para obter o grafo
-graph = parse_tgf(tgf_file)
+# arquivo TGF fornecido
+arquivo_tgf = r'c:\Users\SAMSUNG\Desktop\EstruturaDeDados\trabalho_3\robot.tgf'
 
-# Nó de partida para calcular o caminho mínimo
-start_node = 1
+# parse do arquivo TGF para obter o grafo
+grafo = parse_tgf(arquivo_tgf)
 
-# Executa o algoritmo de Dijkstra
-distances = dijkstra(graph, start_node)
+# nó de partida para calcular o caminho mínimo
+no_partida = 1
 
-# Imprime as distâncias mínimas a partir do nó de partida
-for node, distance in distances.items():
-    print(f'Distância mínima de {start_node} para {node}: {distance}')
+# executa o algoritmo de dijkstra
+distancias = dijkstra(grafo, no_partida)
+
+# imprime as distâncias mínimas a partir do nó de partida
+for no, distancia in distancias.items():
+    print(f'Distância mínima de {no_partida} para {no}: {distancia}')
