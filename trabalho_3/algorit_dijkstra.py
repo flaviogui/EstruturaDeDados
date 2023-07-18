@@ -63,7 +63,7 @@ grafo = parse_tgf(arquivo_tgf)
 # nó de partida para calcular o caminho mínimo
 no_partida = 1
 
-# executa o algoritmo de dijkstra
+# vai executa o algoritmo 
 distancias = dijkstra(grafo, no_partida)
 
 # imprime as distâncias mínimas a partir do nó de partida
